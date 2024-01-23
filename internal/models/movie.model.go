@@ -25,7 +25,7 @@ type QueryParamGetMovie struct {
 
 type NewMovieModel struct {
 	Id              int            `db:"no" valid:"-"`
-	Movie_Photo     multipart.File `db:"movie_photo" json:"movie_photo" valid:"required"`
+	Movie_Photo     multipart.File `db:"movie_photo" form:"movie_photo" json:"movie_photo" valid:"required"`
 	Big_Movie_Photo interface{}    `db:"big_movie_photo" json:"big_movie_photo"`
 	Movie_Name      string         `db:"movie_name" form:"movie_name" json:"movie_name" valid:"required"`
 	Genre           string         `db:"genre" form:"genre" json:"genre" valid:"in(Thriller|Adventure|Horror|Romantic|Sci fi), required"`
@@ -56,7 +56,7 @@ type UpdateMovieModel struct {
 type NewMovieSchedule struct {
 	Date         string  `db:"date" form:"date" json:"date" binding:"required" valid:"required"`
 	Ticket_Price int     `db:"ticket_price" form:"ticket_price" json:"ticket_price" valid:"numeric, required"`
-	Cinema       int     `db:"cinema" form:"cinema" json:"cinema" valid:"numeric, required"`
+	Cinema       string  `db:"cinema" form:"cinema" json:"cinema" valid:"numeric, required"`
 	Time         *string `db:"time" form:"time" json:"time" valid:"numeric, required"`
 }
 

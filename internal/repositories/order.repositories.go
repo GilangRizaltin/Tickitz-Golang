@@ -97,8 +97,8 @@ func (r *OrderRepository) RepositoryGetStatisticOrder(movie_name string) ([]mode
 }
 
 func (r *OrderRepository) RepositoryCreateOrder(client *sqlx.Tx, Order_Id string, User_Id int, dataOrder *models.OrderDetailModel, paymentUrl string) error {
-	query := `insert into order_transaction (id, user_id, schedules_id, seats, total_ticket, total_purchase, paid, activate_until, payment_link)
-	values (:id, :user_id, :schedules_id, :seats, :total_ticket, :total_purchase, false, :activate_until, :payment_link)`
+	query := `insert into order_transaction (id, user_id, schedules_id, seats, total_ticket, total_purchase, paid, activate_until, payment_link, status)
+	values (:id, :user_id, :schedules_id, :seats, :total_ticket, :total_purchase, false, :activate_until, :payment_link, 'Pending')`
 	params := make(map[string]interface{})
 	params["id"] = Order_Id
 	params["user_id"] = User_Id

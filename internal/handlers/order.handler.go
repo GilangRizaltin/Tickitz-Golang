@@ -144,8 +144,9 @@ func (h *HandlerOrder) SubmitPayment(ctx *gin.Context) {
 		ctx.JSON(http.StatusBadRequest, helpers.NewResponse("Error in binding data order", nil, nil))
 		return
 	}
-	// status := webhookData["transaction_status"].(string)
+	status := webhookData["transaction_status"].(string)
 	orderID := webhookData["order_id"].(string)
+	log.Println(status)
 	// if status != "capture" {
 	// 	ctx.JSON(http.StatusBadRequest, helpers.NewResponse("Payment error", nil, nil))
 	// 	return

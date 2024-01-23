@@ -233,7 +233,7 @@ func (r *MovieRepository) RepositoryAddMovieSchedule(body []models.NewMovieSched
 		filteredBody = append(filteredBody, fmt.Sprintf(`:schedule_time%d `, j))
 		filterBody[fmt.Sprintf("schedule_time%d", j)] = body[i].Time
 
-		filteredBody = append(filteredBody, fmt.Sprintf(`:cinema_id%d)`, j))
+		filteredBody = append(filteredBody, fmt.Sprintf(`(select id from cinemas where cinema_name = :cinema_id%d))`, j))
 		filterBody[fmt.Sprintf("cinema_id%d", j)] = body[i].Cinema
 		j++
 	}
